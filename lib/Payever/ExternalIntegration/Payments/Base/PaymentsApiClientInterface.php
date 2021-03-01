@@ -172,7 +172,7 @@ interface PaymentsApiClientInterface extends CommonApiClientInterface
      *
      * @return ResponseInterface
      */
-    public function listPaymentOptionsRequest($params = array(), $businessUuid = '', $channel = '');
+    public function listPaymentOptionsRequest($params = [], $businessUuid = '', $channel = '');
 
     /**
      * Same as listPaymentOptionsRequest, additionally contains list of payment option variants
@@ -185,7 +185,7 @@ interface PaymentsApiClientInterface extends CommonApiClientInterface
      *
      * @return ResponseInterface
      */
-    public function listPaymentOptionsWithVariantsRequest($params = array(), $businessUuid = '', $channel = '');
+    public function listPaymentOptionsWithVariantsRequest($params = [], $businessUuid = '', $channel = '');
 
     /**
      * Returns transaction

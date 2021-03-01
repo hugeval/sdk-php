@@ -63,11 +63,11 @@ class PluginRegistryResponseEntity extends ResponseEntity
      */
     public function getRequired()
     {
-        return array(
+        return [
             'pluginVersion',
             'cmsVersion',
             'host',
             'channel',
-        );
+        ];
     }
 }

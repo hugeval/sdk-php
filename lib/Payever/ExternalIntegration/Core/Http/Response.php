@@ -27,7 +27,7 @@ class Response implements ResponseInterface
     /** @var ResponseEntity $responseEntity */
     protected $responseEntity;
 
-    /** @var string $data */
+    /** @var array|string|object $data */
     protected $data;
 
     /**
@@ -47,7 +47,7 @@ class Response implements ResponseInterface
 
         $this
             ->getResponseEntity()
-            ->load($data ? StringHelper::jsonDecode($this->data) : array())
+            ->load($data ? StringHelper::jsonDecode($this->data) : [])
         ;
 
         return $this;

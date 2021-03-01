@@ -143,7 +143,7 @@ class ClientConfiguration implements ClientConfigurationInterface
      *
      * @param mixed $clientId
      *
-     * @return self;
+     * @return self
      */
     public function setClientId($clientId)
     {

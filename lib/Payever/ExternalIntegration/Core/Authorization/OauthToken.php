@@ -127,13 +127,13 @@ class OauthToken implements OauthTokenInterface
      */
     public function getParams()
     {
-        return array(
+        return [
             'scope'         => $this->scope,
             'access_token'  => $this->accessToken,
             'refresh_token' => $this->refreshToken,
             'created_at'    => $this->createdAt,
             'updated_at'    => $this->updatedAt,
-        );
+        ];
     }
 
     /**
@@ -201,11 +201,11 @@ class OauthToken implements OauthTokenInterface
      */
     public static function getScopes()
     {
-        return array(
+        return [
             static::SCOPE_PAYMENT_ACTIONS,
             static::SCOPE_CREATE_PAYMENT,
             static::SCOPE_PAYMENT_INFO,
-        );
+        ];
     }
 
     /**
@@ -213,10 +213,10 @@ class OauthToken implements OauthTokenInterface
      */
     public static function getGrandTypes()
     {
-        return array(
+        return [
             static::GRAND_TYPE_REFRESH_TOKEN,
             static::GRAND_TYPE_OBTAIN_TOKEN,
-        );
+        ];
     }
 
     /**

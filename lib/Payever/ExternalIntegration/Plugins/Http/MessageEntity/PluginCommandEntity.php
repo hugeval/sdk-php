@@ -53,7 +53,7 @@ class PluginCommandEntity extends MessageEntity
      *
      * @var array
      */
-    protected $metadata = array();
+    protected $metadata = [];
 
     /**
      * @param string $key

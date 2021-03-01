@@ -168,7 +168,7 @@ class CommonApiClient implements CommonApiClientInterface
         /** @var OauthTokenInterface|boolean $token */
         $token = $this->getTokens()->get($key);
 
-        if (!$token || ($token->isExpired() && !$token->isRefreshable())) {
+        if (!$token || ($token instanceof OauthTokenInterface && $token->isExpired() && !$token->isRefreshable())) {
             $tokenData = $this->obtainTokenRequest($scope)->getResponseEntity()->toArray();
 
             $token = $this->getTokens()->add(
@@ -177,7 +177,7 @@ class CommonApiClient implements CommonApiClientInterface
             )->get($key);
 
             $this->getTokens()->save();
-        } elseif ($token->isExpired() && $token->isRefreshable()) {
+        } elseif ($token instanceof OauthTokenInterface && $token->isExpired() && $token->isRefreshable()) {
             $tokenData = $this->refreshTokenRequest($token)->getResponseEntity()->toArray();
 
             $token->load($tokenData)->setUpdatedAt();
@@ -205,9 +205,7 @@ class CommonApiClient implements CommonApiClientInterface
             ->build()
         ;
 
-        $response = $this->getHttpClient()->execute($request);
-
-        return $response;
+        return $this->getHttpClient()->execute($request);
     }
 
     /**
@@ -224,9 +222,7 @@ class CommonApiClient implements CommonApiClientInterface
             ->build()
         ;
 
-        $response = $this->getHttpClient()->execute($request);
-
-        return $response;
+        return $this->getHttpClient()->execute($request);
     }
 
     /**
@@ -296,18 +292,14 @@ class CommonApiClient implements CommonApiClientInterface
             ->setClientId($this->configuration->getClientId())
             ->setClientSecret($this->configuration->getClientSecret())
             ->setScope($scope)
-            ->setGrantType(OauthTokenInterface::GRAND_TYPE_OBTAIN_TOKEN)
-        ;
+            ->setGrantType(OauthTokenInterface::GRAND_TYPE_OBTAIN_TOKEN);
 
         $request = RequestBuilder::post($this->getAuthenticationURL())
             ->setRequestEntity($requestEntity)
             ->setResponseEntity(new AuthenticationResponse())
-            ->build()
-        ;
+            ->build();
 
-        $response = $this->getHttpClient()->execute($request);
-
-        return $response;
+        return $this->getHttpClient()->execute($request);
     }
 
     /**
@@ -329,18 +321,14 @@ class CommonApiClient implements CommonApiClientInterface
             ->setClientSecret($this->configuration->getClientSecret())
             ->setScope($token->getScope())
             ->setGrantType(OauthTokenInterface::GRAND_TYPE_REFRESH_TOKEN)
-            ->setRefreshToken($token->getRefreshToken())
-        ;
+            ->setRefreshToken($token->getRefreshToken());
 
         $request = RequestBuilder::post($this->getAuthenticationURL())
             ->setRequestEntity($requestEntity)
             ->setResponseEntity(new AuthenticationResponse())
-            ->build()
-        ;
+            ->build();
 
-        $response = $this->getHttpClient()->execute($request);
-
-        return $response;
+        return $this->getHttpClient()->execute($request);
     }
 
     /**

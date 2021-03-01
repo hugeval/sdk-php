@@ -52,12 +52,12 @@ class AuthenticationRequest extends RequestEntity
      */
     public function getRequired()
     {
-        $required = array(
+        $required = [
             'scope',
             'client_id',
             'client_secret',
             'grant_type',
-        );
+        ];
 
         if ($this->grantType == OauthToken::GRAND_TYPE_REFRESH_TOKEN) {
             $required[] = 'refresh_token';

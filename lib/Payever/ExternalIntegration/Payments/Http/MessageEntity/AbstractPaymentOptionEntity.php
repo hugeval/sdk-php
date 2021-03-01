@@ -144,7 +144,7 @@ abstract class AbstractPaymentOptionEntity extends ResultEntity
      */
     public function setTranslations($translations)
     {
-        $this->translations = array();
+        $this->translations = [];
 
         foreach ($translations as $item) {
             $this->translations[] = new PaymentOptionTranslationEntity($item);

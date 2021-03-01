@@ -44,7 +44,7 @@ class ListChannelSetsResultEntity extends ResultEntity
      */
     public function setChannelSets($channelSets)
     {
-        $this->channelSets = array();
+        $this->channelSets = [];
 
         foreach ($channelSets as $channelSet) {
             $this->channelSets[] = new ChannelSetEntity($channelSet);

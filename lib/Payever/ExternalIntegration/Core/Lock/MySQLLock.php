@@ -39,10 +39,10 @@ class MySQLLock implements LockInterface
     {
         $statement = $this->pdo->prepare("SELECT GET_LOCK(?,?)");
 
-        $statement->execute(array(
+        $statement->execute([
             $this->prepareLockName($lockName),
             $timeout,
-        ));
+        ]);
 
         $result = $statement->fetch(\PDO::FETCH_NUM);
 

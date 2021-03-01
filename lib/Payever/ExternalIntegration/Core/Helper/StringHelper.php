@@ -52,7 +52,7 @@ class StringHelper
     /**
      * Returns decoded JSON
      *
-     * @param array|\stdClass|string $object
+     * @param array|object|\stdClass|string $object
      *
      * @return bool|mixed
      * @throws \UnexpectedValueException

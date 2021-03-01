@@ -23,9 +23,9 @@ class ActionHandlerPool
      * ActionHandlerPool constructor.
      * @param ActionHandlerInterface[] $handlers
      */
-    public function __construct(array $handlers = array())
+    public function __construct(array $handlers = [])
     {
-        $this->handlers = array();
+        $this->handlers = [];
 
         foreach ($handlers as $handler) {
             $this->registerActionHandler($handler);

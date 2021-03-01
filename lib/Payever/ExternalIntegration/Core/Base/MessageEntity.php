@@ -62,7 +62,7 @@ abstract class MessageEntity implements MessageEntityInterface, \ArrayAccess
      */
     public function toArray($object = null)
     {
-        $result = array();
+        $result = [];
 
         if ($object === null) {
             $object = get_object_vars($this);
@@ -96,7 +96,7 @@ abstract class MessageEntity implements MessageEntityInterface, \ArrayAccess
      */
     public function getRequired()
     {
-        return array();
+        return [];
     }
 
     /**

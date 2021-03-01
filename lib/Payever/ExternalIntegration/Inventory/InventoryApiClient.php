@@ -114,10 +114,10 @@ class InventoryApiClient extends CommonProductsThirdPartyApiClient implements In
                 $this->configuration->getLogger()
                     ->critical(
                         'Inventory item failed to export',
-                        array(
+                        [
                             'sku' => $inventoryCreatedRequestEntity->getSku(),
                             'exception' => $exception->getMessage(),
-                        )
+                        ]
                     );
             }
         }

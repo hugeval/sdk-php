@@ -64,7 +64,7 @@ class CurlClient implements HttpClientInterface, LoggerAwareInterface
                     $exception->getCode(),
                     $exception->getMessage()
                 ),
-                array('trace' => $exception->getTraceAsString())
+                ['trace' => $exception->getTraceAsString()]
             );
 
             throw $exception;
@@ -83,7 +83,7 @@ class CurlClient implements HttpClientInterface, LoggerAwareInterface
     {
         $this->logger->debug(
             sprintf('HTTP Request %s %s', $request->getMethod(), $request->getUrl()),
-            array('headers' => $request->getHeaders(), 'body' => $request->toArray())
+            ['headers' => $request->getHeaders(), 'body' => $request->toArray()]
         );
 
         if (!$request->validate()) {
@@ -96,17 +96,17 @@ class CurlClient implements HttpClientInterface, LoggerAwareInterface
             throw new \RuntimeException('Could not get cURL resource');
         }
 
-        $options = array(
+        $options = [
             CURLOPT_URL          => $request->getUrl(),
             CURLOPT_HTTPHEADER   => $request->getHeaders(),
             CURLOPT_HTTP_VERSION => $request->getProtocolVersion(),
-        );
+        ];
 
-        $customMethods = array(
+        $customMethods = [
             Request::METHOD_PUT,
             Request::METHOD_PATCH,
             Request::METHOD_DELETE,
-        );
+        ];
 
         if ($request->getMethod() === Request::METHOD_POST) {
             $options[CURLOPT_POST] = true;
@@ -119,11 +119,13 @@ class CurlClient implements HttpClientInterface, LoggerAwareInterface
             $options[CURLOPT_POSTFIELDS] = $request->toArray();
         }
 
-        if (isset($options[CURLOPT_POSTFIELDS])
+        if (
+            isset($options[CURLOPT_POSTFIELDS]) && is_array($options[CURLOPT_POSTFIELDS])
             && $request->getHeader('Content-Type') == 'application/x-www-form-urlencoded'
         ) {
             $options[CURLOPT_POSTFIELDS] = http_build_query($options[CURLOPT_POSTFIELDS]);
-        } elseif (isset($options[CURLOPT_POSTFIELDS])
+        } elseif (
+            isset($options[CURLOPT_POSTFIELDS]) && is_array($options[CURLOPT_POSTFIELDS])
             && $request->getHeader('Content-Type') == 'application/json'
         ) {
             $options[CURLOPT_POSTFIELDS] = json_encode($options[CURLOPT_POSTFIELDS]);
@@ -140,7 +142,7 @@ class CurlClient implements HttpClientInterface, LoggerAwareInterface
 
         $this->logger->debug(
             sprintf('HTTP Response %s %s', $request->getMethod(), $request->getUrl()),
-            array('httpCode' => $httpCode, 'body' => $result, 'curlError' => $errorMessage)
+            ['httpCode' => $httpCode, 'body' => $result, 'curlError' => $errorMessage]
         );
 
         if ($errorNumber !== 0) {
@@ -189,7 +191,7 @@ class CurlClient implements HttpClientInterface, LoggerAwareInterface
      */
     protected function getRequestOptions($override)
     {
-        $default = array(
+        $default = [
             CURLOPT_HEADER         => 0,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_SSL_VERIFYPEER => false,
@@ -197,7 +199,7 @@ class CurlClient implements HttpClientInterface, LoggerAwareInterface
             CURLOPT_TIMEOUT        => 30,
             CURLOPT_CONNECTTIMEOUT => 15,
             CURLOPT_HTTP_VERSION   => 1.1,
-        );
+        ];
 
         return $override + $default;
     }
