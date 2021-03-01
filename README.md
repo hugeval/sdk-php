@@ -1,7 +1,7 @@
 # PHP SDK for payever Payments
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/payeverworldwide/sdk-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/payeverworldwide/sdk-php/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/payeverworldwide/sdk-php/badges/build.png?b=master)](https://scrutinizer-ci.com/g/payeverworldwide/sdk-php/build-status/master)
-[![Code Intelligence Status](https://scrutinizer-ci.com/g/payeverworldwide/sdk-php/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/hugeval/sdk-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/payeverworldwide/sdk-php/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/hugeval/sdk-php/badges/build.png?b=master)](https://scrutinizer-ci.com/g/payeverworldwide/sdk-php/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/hugeval/sdk-php/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 [![Latest Stable Version](https://poser.pugx.org/payever/sdk-php/v/stable)](https://packagist.org/packages/payever/sdk-php)
 [![Total Downloads](https://poser.pugx.org/payever/sdk-php/downloads)](https://packagist.org/packages/payever/sdk-php)
 [![License](https://poser.pugx.org/payever/sdk-php/license)](https://packagist.org/packages/payever/sdk-php)

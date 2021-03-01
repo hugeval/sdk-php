@@ -1,0 +1,9 @@
+build:
+  nodes:
+    unit-tests:
+      environment:
+        php:
+          version: 5.5
+          pecl_extensions:
+            - json
+            - curl
