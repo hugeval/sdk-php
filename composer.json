@@ -13,7 +13,7 @@
          "lib"
       ]
    },
-   "description" : "PHP SDK for payever",
+   "description" : "PHP SDK for payever (scrutinizer test fork)",
    "minimum-stability" : "stable",
    "license" : "MIT",
    "require-dev" : {
