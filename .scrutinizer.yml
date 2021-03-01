@@ -2,3 +2,9 @@ build:
   environment:
     php:
       version: 5.5
+  nodes:
+    analysis:
+      tests:
+        override:
+          - php ./vendor/bin/phpunit --configuration phpunit.scrutinizer.xml
+
