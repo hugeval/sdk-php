@@ -3,8 +3,6 @@ build:
     php:
       version: 7.1
   nodes:
-    analysis:
-      tests:
-        override:
-          - php ./vendor/bin/phpunit --configuration phpunit.scrutinizer.xml
-
+    tests:
+      override:
+        - php ./vendor/bin/phpunit --configuration phpunit.scrutinizer.xml
